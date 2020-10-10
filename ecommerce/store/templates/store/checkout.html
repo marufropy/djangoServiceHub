@@ -110,7 +110,7 @@
 
 		var form = document.getElementById('form')
 		
-		csrf_token = form.getElementsByTagName("input")[0].value
+		csrftoken = form.getElementsByTagName("input")[0].value
 		console.log("NewToken:", 
 					form.getElementsByTagName("input")[0].value
 					)
@@ -161,7 +161,7 @@
 	    		method:'POST',
 	    		headers:{
 	    			'Content-Type':'applicaiton/json',
-	    			'X-CSRFToken':csrf_token,
+	    			'X-CSRFToken':csrftoken,
 	    		}, 
 	    		body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
 	    		
@@ -171,8 +171,8 @@
 				console.log('Success:', data);
 				alert('Transaction completed');  
 
-				// cart = {}
-				// document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+				cart = {}
+				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
 
 				window.location.href = "{% url 'store' %}"
 			})
