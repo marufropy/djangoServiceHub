@@ -39,6 +39,7 @@ def cookieCart(request):
                 order['shipping'] = True
         except:
             pass
+
     return {'cartItems':cartItems, 'order':order, 'items':items}
 
 
@@ -56,6 +57,7 @@ def cartData(request):
         cartItems = cookieData['cartItems']
         order = cookieData['order']
         items = cookieData['items']
+
     return {'cartItems':cartItems, 'order':order, 'items':items}
 
 
@@ -87,4 +89,5 @@ def guestOrder(request, data):
             order=order,
             quantity=item['quantity'],
         )
+        
     return customer, order

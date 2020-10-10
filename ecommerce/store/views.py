@@ -11,8 +11,8 @@ def store(request):
     data = cartData(request)
     
     cartItems = data['cartItems']
-
     products = Product.objects.all()
+
     context = {'products':products, 'cartItems':cartItems}
     return render(request, 'store/store.html', context)
 
@@ -48,8 +48,8 @@ def updateItem(request):
 
 	customer = request.user.customer
 	product = Product.objects.get(id=productId)
-	order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
+	order, created = Order.objects.get_or_create(customer=customer, complete=False)
 	orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
 	if action == 'add':
@@ -74,8 +74,6 @@ def processOrder(request):
         order, created = Order.objects.get_or_create(
                                                     customer=customer, complete=False
                                                     )
-
-    
     else:
         customer, order = guestOrder(request, data)
 
